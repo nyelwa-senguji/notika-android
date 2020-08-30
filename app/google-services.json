@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "869517277618",
+    "firebase_url": "https://notika-e9b3a.firebaseio.com",
+    "project_id": "notika-e9b3a",
+    "storage_bucket": "notika-e9b3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869517277618:android:bb166d479e1b303efe0cab",
+        "android_client_info": {
+          "package_name": "com.example.notika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869517277618-te4d424bncijptp48nlasbnmp2tbqbc3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.notika",
+            "certificate_hash": "a5f7e55ccd662c384d6d8e86bacfd5dcd0c5d6ea"
+          }
+        },
+        {
+          "client_id": "869517277618-9733pt58j2m0t2dbafr3grhialnq2sl3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnOuJBDsgEzydA26nv7nanvQmoi71t8bQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869517277618-9733pt58j2m0t2dbafr3grhialnq2sl3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

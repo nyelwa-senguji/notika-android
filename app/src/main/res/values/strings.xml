@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">Notika</string>
+    <string name="sample">Simple Image</string>
+    <string name="hello">Hello Students</string>
+
+    <string name="signup">Sign Up</string>
+    <string name="explore">Explore</string>
+    <string name="title">notika</string>
+
+    <string name="N">N</string>
+    <string name="O">O</string>
+    <string name="n">n</string>
+    <string name="o">o</string>
+    <string name="t">t</string>
+    <string name="T">T</string>
+    <string name="i">i</string>
+    <string name="I">I</string>
+    <string name="K">K</string>
+    <string name="k">k</string>
+    <string name="A">A</string>
+    <string name="a">a</string>
+
+    <string name="Explore">Explore</string>
+    <string name="topic">My Topics</string>
+    <string name="Profile">Profile</string>
+    <string name="signUpPasswordHint">Password</string>
+    <string name="signUpEmailHint">Email</string>
+    <string name="signUpPasswordHint1">Retype Password</string>
+    <string name="or">OR</string>
+    <string name="or1">Sign Up with</string>
+    <string name="g">G</string>
+    <string name="f">f</string>
+    <string name="already">Already have an account ?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="or2">Sign In with</string>
+    <string name="already2" />
+    <string name="already3">Don\'t have an account ?</string>
+    <string name="settings">settings</string>
+    <string name="downloads">Downloads</string>
+    <string name="uploads">Uploads</string>
+    <string name="courses">Courses</string>
+    <string name="account">Account</string>
+    <string name="payments">Payments</string>
+    <string name="history">History</string>
+    <string name="learn">Learn at ease</string>
+    <string name="any">Anywhere, Anytime.</string>
+    <string name="explore_tab">Explore</string>
+    <string name="catalogue_tab">Catalogue</string>
+    <string name="download_tab">Downloads</string>
+    <string name="learn2">What do you want to learn?</string>
+    <string name="filter">FILTER</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="signout">SIGN OUT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google">Continue with google</string>
+    <string name="todo">TODO</string>
+    <string name="popular">Popular topics</string>
+    <string name="featured">Featured topics</string>
+    <string name="recent">Recent Added</string>
+
+    <string-array name="topics">
+        <item>Arts and Humanities</item>
+        <item>Design</item>
+        <item>Development</item>
+        <item>Finance and Accounting</item>
+        <item>Mathematics</item>
+        <item>Engineering Physics</item>
+        <item>Science</item>
+        <item>Basic Computing</item>
+        <item>Networking</item>
+        <item>IT Solutions</item>
+    </string-array>
+
+    <string-array name="topic_title">
+        <item>Calculus I - Differentiation</item>
+        <item>Complex numbers</item>
+        <item>Newton laws of physics</item>
+        <item>Electromagnetic Induction</item>
+        <item>Trigonometric Functions</item>
+    </string-array>
+    <string-array name="topic_description">
+        <item>Advanced Level - Form VI</item>
+        <item>Advanced Level - Form VI</item>
+        <item>O level - Form II</item>
+        <item>Advanced level - Form VI</item>
+        <item>Advanced Level - Form VI</item>
+    </string-array>
+
+
+</resources>
