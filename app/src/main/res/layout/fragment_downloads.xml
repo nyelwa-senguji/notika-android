@@ -5,12 +5,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/exploreAnimation"
+
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/exploreAnimation"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        app:lottie_rawRes="@raw/download"-->
+<!--        app:lottie_autoPlay="true"-->
+<!--        app:lottie_loop="true"/>-->
+
+    <LinearLayout
+        android:id="@+id/topicsLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:lottie_rawRes="@raw/download"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/download"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/downloads"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/downloadString"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/signInDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_btn"
+            android:text="@string/sign_in"
+            android:textColor="@color/colorAccent"/>
+    </LinearLayout>
+
 </androidx.core.widget.NestedScrollView>

@@ -12,6 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 
@@ -20,13 +26,7 @@ import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
  */
 public class BrowseFragment extends Fragment {
 
-    String s1[];
-    String s2[];
-
-    int images[] = {R.drawable.diff, R.drawable.complex, R.drawable.law,
-            R.drawable.electromagnetic, R.drawable.trig};
-
-    RecyclerView horizontalRecyclerView, horizontalRecyclerView2, horizontalRecyclerView3;
+    MyBrowserAdapter myBrowserAdapterOne, myBrowserAdapterTwo;
 
     public BrowseFragment() {
         // Required empty public constructor
@@ -44,24 +44,56 @@ public class BrowseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        horizontalRecyclerView = (RecyclerView) view.findViewById(R.id.horizontalRecyclerView);
-        horizontalRecyclerView2 = (RecyclerView) view.findViewById(R.id.horizontalRecyclerView2);
-        horizontalRecyclerView3 = (RecyclerView) view.findViewById(R.id.horizontalRecyclerView3);
+        Query queryOne = FirebaseFirestore.getInstance()
+                .collection("Topic")
+                .limit(4);
 
-        s1 = getResources().getStringArray(R.array.topic_title);
-        s2 = getResources().getStringArray(R.array.topic_description);
+        Query queryTwo = FirebaseFirestore.getInstance()
+                .collection("Topic")
+                .whereEqualTo("subject", "Physics");
 
-        MyBrowserAdapter myBrowserAdapter = new MyBrowserAdapter(getActivity(), s1, s2, images);
-        horizontalRecyclerView.setAdapter(myBrowserAdapter);
+        RecyclerView horizontalRecyclerView = (RecyclerView) view.findViewById(R.id.horizontalRecyclerView);
+        RecyclerView horizontalRecyclerView2 = (RecyclerView) view.findViewById(R.id.horizontalRecyclerView2);
+        RecyclerView horizontalRecyclerView3 = (RecyclerView) view.findViewById(R.id.horizontalRecyclerView3);
+
+        FirestoreRecyclerOptions<Topic> optionsOne = new FirestoreRecyclerOptions.Builder<Topic>()
+                .setQuery(queryOne, Topic.class)
+                .build();
+
+        FirestoreRecyclerOptions<Topic> optionsTwo = new FirestoreRecyclerOptions.Builder<Topic>()
+                .setQuery(queryTwo, Topic.class)
+                .build();
+
+
+        myBrowserAdapterOne = new MyBrowserAdapter(optionsOne);
+        myBrowserAdapterTwo = new MyBrowserAdapter(optionsTwo);
+
+        horizontalRecyclerView.setAdapter(myBrowserAdapterOne);
         horizontalRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        horizontalRecyclerView2.setAdapter(myBrowserAdapter);
+
+        horizontalRecyclerView2.setAdapter(myBrowserAdapterTwo);
         horizontalRecyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        horizontalRecyclerView3.setAdapter(myBrowserAdapter);
+
+        horizontalRecyclerView3.setAdapter(myBrowserAdapterOne);
         horizontalRecyclerView3.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         //horizontal overScroll decoration
         OverScrollDecoratorHelper.setUpOverScroll(horizontalRecyclerView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
         OverScrollDecoratorHelper.setUpOverScroll(horizontalRecyclerView2, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
         OverScrollDecoratorHelper.setUpOverScroll(horizontalRecyclerView3, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        myBrowserAdapterOne.startListening();
+        myBrowserAdapterTwo.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        myBrowserAdapterOne.stopListening();
+        myBrowserAdapterTwo.stopListening();
     }
 }

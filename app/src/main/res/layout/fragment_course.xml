@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_mono"
                 android:text="@string/title"
+                android:textStyle="bold"
                 android:textColor="@color/colorAccent"
                 android:textSize="30sp"
                 android:layout_gravity="center"/>

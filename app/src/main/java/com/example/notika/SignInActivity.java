@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -34,6 +35,7 @@ public class SignInActivity extends AppCompatActivity {
     private ImageView clear;
     private EditText signInPassword;
     private GoogleSignInClient mGoogleSignInClient;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -57,6 +59,8 @@ public class SignInActivity extends AppCompatActivity {
         signInEmail = (EditText) findViewById(R.id.signInEmailTextField);
         signInPassword = (EditText) findViewById(R.id.signInPasswordTextField);
         clear = (ImageView) findViewById(R.id.clear);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
         //Button for google sign In
         //And its onClick event
@@ -103,6 +107,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void onClickSignInUser(View view) {
+        progressBar.setVisibility(View.VISIBLE);
 
         String email = signInEmail.getText().toString();
         String password = signInPassword.getText().toString();
@@ -113,6 +118,7 @@ public class SignInActivity extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    progressBar.setVisibility(View.INVISIBLE);
 
                     if(task.isSuccessful()){
                         Intent intent = new Intent(SignInActivity.this, ExploreActivity.class);

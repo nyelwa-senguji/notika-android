@@ -18,9 +18,6 @@ import android.widget.Button;
  */
 public class LoginFragment extends Fragment {
 
-    Button loginSignIn;
-    Button loginSignUp;
-
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -37,8 +34,11 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        loginSignIn = (Button) view.findViewById(R.id.buttonLogin2);
-        loginSignUp = (Button) view.findViewById(R.id.buttonLogin);
+        // XML Objects
+        Button loginSignIn = (Button) view.findViewById(R.id.buttonLogin2);
+        Button loginSignUp = (Button) view.findViewById(R.id.buttonLogin);
+
+        // Start signUp Activity
         loginSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +47,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        // Start Sign In Activity
         loginSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

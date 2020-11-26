@@ -14,9 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -40,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText signUpPassword;
     private EditText confirmSignUpPassword;
     private GoogleSignInClient mGoogleSignInClient;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -64,6 +67,8 @@ public class SignUpActivity extends AppCompatActivity {
         signUpPassword = (EditText) findViewById(R.id.signUpPasswordTextField);
         confirmSignUpPassword = (EditText) findViewById(R.id.signUpPasswordTextField1);
         clear = (ImageView) findViewById(R.id.clear);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
         //Button for google sign In
         //And its onClick event
@@ -109,8 +114,9 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Email password Sign up
     public void onClickSignUpUser(View view) {
-
+        progressBar.setVisibility(View.VISIBLE);
         String email = signUpEmail.getText().toString();
         String password = signUpPassword.getText().toString();
         String confirm_password = confirmSignUpPassword.getText().toString();
@@ -125,22 +131,21 @@ public class SignUpActivity extends AppCompatActivity {
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
+                        progressBar.setVisibility(View.INVISIBLE);
                         if (task.isSuccessful()){
-                            Intent intent = new Intent(SignUpActivity.this, ExploreActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, SetupActivity.class);
                             startActivity(intent);
                             finish();
                         }else{
-
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            String error = task.getException().getMessage();
+                            Toast.makeText(SignUpActivity.this, "Error:"+ error, Toast.LENGTH_LONG).show();
                         }
 
                     }
                 });
 
             }else{
-                Toast.makeText(SignUpActivity.this, "Password fields donot match", Toast.LENGTH_LONG).show();
+                Toast.makeText(SignUpActivity.this, "Password fields do not match", Toast.LENGTH_LONG).show();
             }
         }
     }

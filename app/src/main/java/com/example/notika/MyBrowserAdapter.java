@@ -2,6 +2,7 @@ package com.example.notika;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,50 +13,61 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyBrowserAdapter extends RecyclerView.Adapter<MyBrowserAdapter.BrowserViewHolder> {
+import com.bumptech.glide.Glide;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.squareup.picasso.Picasso;
 
-    String data1[];
-    String data2[];
-    int images[];
-    Context context;
+public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserAdapter.BrowserViewHolder> {
 
-    public  MyBrowserAdapter(Context ct, String s1[], String s2[], int img[]){
-        context = ct;
-        data1 = s1;
-        data2 = s2;
-        images = img;
+    BrowseFragment browseFragment;
+//    private String[] data1;
+//    private String[] data2;
+//    private int[] images;
+//    private Context context;
+
+    public  MyBrowserAdapter(@NonNull FirestoreRecyclerOptions<Topic> options){
+       super(options);
     }
 
     @NonNull
     @Override
     public BrowserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View browseItem = layoutInflater.inflate(R.layout.browse_list, parent, false);
         BrowserViewHolder browserViewHolder = new BrowserViewHolder(browseItem);
         return browserViewHolder;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull BrowserViewHolder holder, int position) {
-        holder.title_tv.setText(data1[position]);
-        holder.description_tv.setText(data2[position]);
-        holder.horizontalImage.setImageResource(images[position]);
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("data1", data1[position]);
-                intent.putExtra("data2", data2[position]);
-                intent.putExtra("myImage", images[position]);
-                context.startActivity(intent);
-            }
-        });
-    }
+//    @Override
+//    public void onBindViewHolder(@NonNull BrowserViewHolder holder, int position) {
+//        holder.title_tv.setText(data1[position]);
+//        holder.description_tv.setText(data2[position]);
+//        holder.horizontalImage.setImageResource(images[position]);
+//        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, DetailActivity.class);
+//                intent.putExtra("data1", data1[position]);
+//                intent.putExtra("data2", data2[position]);
+//                intent.putExtra("myImage", images[position]);
+//                context.startActivity(intent);
+//            }
+//        });
+//    }
 
     @Override
-    public int getItemCount() {
-        return data1.length;
+    protected void onBindViewHolder(@NonNull BrowserViewHolder browserViewHolder, int i, @NonNull Topic topic) {
+        browserViewHolder.title_tv.setText(topic.getTopic_name());
+        browserViewHolder.description_tv.setText(topic.getSubject());
+        //Glide.with(browseFragment).load(topic.getImage()).into(browserViewHolder.horizontalImage);
+        Picasso.get().load(topic.getImage()).into(browserViewHolder.horizontalImage);
     }
+
+//    @Override
+//    public int getItemCount() {
+//        return data1.length;
+//    }
 
     public class BrowserViewHolder extends RecyclerView.ViewHolder{
 

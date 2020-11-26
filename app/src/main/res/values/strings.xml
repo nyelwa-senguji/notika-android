@@ -2,10 +2,27 @@
     <string name="app_name">Notika</string>
     <string name="sample">Simple Image</string>
     <string name="hello">Hello Students</string>
+    <string name="display">Display</string>
 
     <string name="signup">Sign Up</string>
     <string name="explore">Explore</string>
     <string name="title">notika</string>
+    <string name="normal">Sign In with your Notika Account</string>
+    <string name="normal_night">Use night mode</string>
+    <string name="normal_night_subtitle">Remove whiteness from the screen</string>
+    <string name="download_normal">Download settings</string>
+    <string name="download_normal_automatically">Download Automatically</string>
+    <string name="download_normal_automatically_subtitle">Bookmarks will automatically download when you add them</string>
+    <string name="download_normal_wifi">Download over WI-FI</string>
+    <string name="download_normal_wifi_subtitle">Downloads will occur if you are connected to Wi-Fi</string>
+    <string name="more_normal">More</string>
+    <string name="about">About</string>
+    <string name="share">Share the app</string>
+
+    <string name="user">Username</string>
+
+    <string name="topicString">Topics you read will appear here</string>
+    <string name="downloadString">Your downloads will appear here</string>
 
     <string name="N">N</string>
     <string name="O">O</string>
@@ -21,7 +38,9 @@
     <string name="a">a</string>
 
     <string name="Explore">Explore</string>
-    <string name="topic">My Topics</string>
+    <string name="edit">Edit Profile</string>
+    <string name="save">Save Account Settings</string>
+    <string name="topic">Topics</string>
     <string name="Profile">Profile</string>
     <string name="signUpPasswordHint">Password</string>
     <string name="signUpEmailHint">Email</string>
@@ -51,7 +70,7 @@
     <string name="filter">FILTER</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
-    <string name="signout">SIGN OUT</string>
+    <string name="signout">Sign Out</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -88,6 +107,22 @@
         <item>Advanced level - Form VI</item>
         <item>Advanced Level - Form VI</item>
     </string-array>
+    <string name="title_activity_app_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 
 </resources>

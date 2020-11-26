@@ -1,22 +1,353 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
-    <TextView
-        android:id="@+id/signOut"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <!-- Account relative layout -->
+    <RelativeLayout
+        android:id="@+id/accountRelativeLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/signout"
-        android:textSize="24sp"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:elevation="5dp"
+        android:layout_marginVertical="10dp"
+        android:background="@color/colorAccent">
+        <TextView
+            android:id="@+id/account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/ifNotSignedIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/normal"
+            android:layout_below="@id/account"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:focusable="true"
+            android:paddingVertical="10dp"/>
+
+        <RelativeLayout
+            android:id="@+id/ifSignedIn"
+            android:layout_width="match_parent"
+            android:layout_below="@id/account"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/default_profile" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/profile_image"
+                android:layout_marginStart="20dp"
+                android:layout_marginVertical="10dp"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/userEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/profile_image"
+                android:layout_below="@id/username"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                android:textSize="12sp"/>
+
+<!--            <ImageView-->
+<!--                android:id="@+id/arrow"-->
+<!--                android:layout_width="36sp"-->
+<!--                android:layout_height="36sp"-->
+<!--                android:src="@drawable/arrow"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_alignParentEnd="true"/>-->
+
+            <View
+                android:id="@+id/horizontalLine"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#CCCCCC"
+                android:layout_below="@id/userEmail"
+                android:layout_marginHorizontal="10dp"/>
+            <TextView
+                android:id="@+id/signOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@string/signout"
+                android:layout_below="@id/horizontalLine"
+                android:layout_marginVertical="20dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--Theme relative layout -->
+    <RelativeLayout
+        android:id="@+id/themeRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:layout_marginVertical="10dp"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/display"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/nightMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/normal_night"
+            android:layout_below="@id/theme"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/subtitleNightMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/normal_night_subtitle"
+            android:layout_below="@id/nightMode"
+            android:textSize="12sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp" />
+        <Switch
+            android:id="@+id/themeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/subtitleNightMode"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="10dp"/>
+    </RelativeLayout>
+
+    <!--Download relative layout -->
+    <RelativeLayout
+        android:id="@+id/downloadRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:layout_marginVertical="10dp"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/download_normal"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/downloadAutomatically"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/download_normal_automatically"
+            android:layout_below="@id/download"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/subtitleDownloadAutomatically"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:text="@string/download_normal_automatically_subtitle"
+            android:layout_below="@id/downloadAutomatically"
+            android:textSize="12sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="10dp"/>
+        <Switch
+            android:id="@+id/downloadSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@id/subtitleDownloadAutomatically"
+            android:layout_marginEnd="10dp"/>
+
+        <View
+            android:id="@+id/downloadHorizontalLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#CCCCCC"
+            android:layout_below="@id/subtitleDownloadAutomatically"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"/>
+
+        <TextView
+            android:id="@+id/downloadWifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/download_normal_wifi"
+            android:layout_below="@id/downloadHorizontalLine"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/subtitleDownloadWifi"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:text="@string/download_normal_wifi_subtitle"
+            android:layout_below="@id/downloadWifi"
+            android:textSize="12sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"/>
+        <Switch
+            android:id="@+id/downloadWifiSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/subtitleDownloadWifi"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="150dp"/>
+    </RelativeLayout>
+
+    <!--More relative layout -->
+    <RelativeLayout
+        android:id="@+id/moreRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:layout_marginVertical="10dp"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more_normal"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="10dp"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/moreAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about"
+            android:layout_below="@id/more"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="10dp"/>
+
+        <ImageView
+            android:id="@+id/aboutArrow"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/arrow"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"/>
+
+        <View
+            android:id="@+id/moreAboutHorizontalLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#CCCCCC"
+            android:layout_below="@id/moreAbout"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"/>
+
+
+        <TextView
+            android:id="@+id/moreShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share"
+            android:layout_below="@id/moreAboutHorizontalLine"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="10dp"/>
+
+        <ImageView
+            android:id="@+id/shareArrow"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/arrow"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="110dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"/>
+
+        <View
+            android:id="@+id/moreShareHorizontalLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#CCCCCC"
+            android:layout_below="@id/moreShare"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"/>
+
+        <TextView
+            android:id="@+id/moreContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share"
+            android:layout_below="@id/moreShareHorizontalLine"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <ImageView
+            android:id="@+id/contactArrow"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/arrow"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="170dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

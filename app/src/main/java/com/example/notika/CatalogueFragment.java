@@ -21,15 +21,9 @@ import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
  */
 public class CatalogueFragment extends Fragment {
 
-    String s1[];
-
-    int images[] = {R.drawable.arts, R.drawable.design, R.drawable.development,
+    private int[] images = {R.drawable.arts, R.drawable.design, R.drawable.development,
                     R.drawable.finance, R.drawable.math, R.drawable.physics, R.drawable.science,
                     R.drawable.computing, R.drawable.networking,R.drawable.it};
-
-    RecyclerView recyclerView;
-
-    RecyclerView.ItemDecoration itemDecoration;
 
     public CatalogueFragment() {
         // Required empty public constructor
@@ -47,15 +41,15 @@ public class CatalogueFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 
-        s1 = getResources().getStringArray(R.array.topics);
+        String[] s1 = getResources().getStringArray(R.array.topics);
 
         MyAdapter myAdapter =  new MyAdapter(getActivity(), s1, images);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
     }
 
