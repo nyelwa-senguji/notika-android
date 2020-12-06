@@ -20,13 +20,12 @@ import com.squareup.picasso.Picasso;
 
 public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserAdapter.BrowserViewHolder> {
 
-    BrowseFragment browseFragment;
 //    private String[] data1;
 //    private String[] data2;
 //    private int[] images;
-//    private Context context;
+    private Context context;
 
-    public  MyBrowserAdapter(@NonNull FirestoreRecyclerOptions<Topic> options){
+    MyBrowserAdapter(@NonNull FirestoreRecyclerOptions<Topic> options){
        super(options);
     }
 
@@ -60,7 +59,7 @@ public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserA
     protected void onBindViewHolder(@NonNull BrowserViewHolder browserViewHolder, int i, @NonNull Topic topic) {
         browserViewHolder.title_tv.setText(topic.getTopic_name());
         browserViewHolder.description_tv.setText(topic.getSubject());
-        //Glide.with(browseFragment).load(topic.getImage()).into(browserViewHolder.horizontalImage);
+        //Glide.with(context).load(topic.getImage()).into(browserViewHolder.horizontalImage);
         Picasso.get().load(topic.getImage()).into(browserViewHolder.horizontalImage);
     }
 
@@ -69,20 +68,30 @@ public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserA
 //        return data1.length;
 //    }
 
-    public class BrowserViewHolder extends RecyclerView.ViewHolder{
+    static class BrowserViewHolder extends RecyclerView.ViewHolder{
 
         TextView title_tv;
         TextView description_tv;
         ImageView horizontalImage;
         LinearLayout mainLayout;
 
-        public BrowserViewHolder(@NonNull View itemView) {
+        BrowserViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title_tv = itemView.findViewById(R.id.title_tv);
             description_tv = itemView.findViewById(R.id.description_tv);
             horizontalImage = itemView.findViewById(R.id.horizontalImage);
             mainLayout = itemView.findViewById(R.id.mainLayout);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(itemView.getContext(), DetailActivity.class);
+                    i.putExtra("topic_name", title_tv.getText());
+                    i.putExtra("subject", description_tv.getText());
+                    itemView.getContext().startActivity(i);
+//                    itemView.getContext().startActivity(new Intent(itemView.getContext(), DetailActivity.class));
+                }
+            });
         }
     }
 }
