@@ -1,5 +1,7 @@
 package com.example.notika;
 
+import java.util.List;
+
 public class Topic {
 
     //  Variables to store data from firebase
@@ -36,4 +38,7 @@ public class Topic {
     public void setImage(String image){
         this.image = image;
     }
+
+
+
 }

@@ -20,11 +20,6 @@ import com.squareup.picasso.Picasso;
 
 public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserAdapter.BrowserViewHolder> {
 
-//    private String[] data1;
-//    private String[] data2;
-//    private int[] images;
-    private Context context;
-
     MyBrowserAdapter(@NonNull FirestoreRecyclerOptions<Topic> options){
        super(options);
     }
@@ -38,35 +33,12 @@ public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserA
         return browserViewHolder;
     }
 
-//    @Override
-//    public void onBindViewHolder(@NonNull BrowserViewHolder holder, int position) {
-//        holder.title_tv.setText(data1[position]);
-//        holder.description_tv.setText(data2[position]);
-//        holder.horizontalImage.setImageResource(images[position]);
-//        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, DetailActivity.class);
-//                intent.putExtra("data1", data1[position]);
-//                intent.putExtra("data2", data2[position]);
-//                intent.putExtra("myImage", images[position]);
-//                context.startActivity(intent);
-//            }
-//        });
-//    }
-
     @Override
     protected void onBindViewHolder(@NonNull BrowserViewHolder browserViewHolder, int i, @NonNull Topic topic) {
         browserViewHolder.title_tv.setText(topic.getTopic_name());
         browserViewHolder.description_tv.setText(topic.getSubject());
-        //Glide.with(context).load(topic.getImage()).into(browserViewHolder.horizontalImage);
         Picasso.get().load(topic.getImage()).into(browserViewHolder.horizontalImage);
     }
-
-//    @Override
-//    public int getItemCount() {
-//        return data1.length;
-//    }
 
     static class BrowserViewHolder extends RecyclerView.ViewHolder{
 
@@ -86,10 +58,10 @@ public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserA
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(itemView.getContext(), DetailActivity.class);
+
                     i.putExtra("topic_name", title_tv.getText());
                     i.putExtra("subject", description_tv.getText());
                     itemView.getContext().startActivity(i);
-//                    itemView.getContext().startActivity(new Intent(itemView.getContext(), DetailActivity.class));
                 }
             });
         }
