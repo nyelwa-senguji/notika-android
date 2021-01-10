@@ -18,6 +18,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserAdapter.BrowserViewHolder> {
 
     MyBrowserAdapter(@NonNull FirestoreRecyclerOptions<Topic> options){
@@ -38,6 +40,7 @@ public class MyBrowserAdapter extends FirestoreRecyclerAdapter<Topic, MyBrowserA
         browserViewHolder.title_tv.setText(topic.getTopic_name());
         browserViewHolder.description_tv.setText(topic.getSubject());
         Picasso.get().load(topic.getImage()).into(browserViewHolder.horizontalImage);
+
     }
 
     static class BrowserViewHolder extends RecyclerView.ViewHolder{

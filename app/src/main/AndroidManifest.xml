@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SetupActivity" />
-        <activity android:name=".DetailActivity" />
+        <activity android:name=".DetailActivity"
+            android:theme="@style/NoActionBarTheme" />
         <activity android:name=".SettingsActivity" />
         <activity
             android:name=".SignUpActivity"
