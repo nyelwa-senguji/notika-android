@@ -1,4 +1,4 @@
-package com.example.notika;
+package com.example.notika.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,6 @@ public class Topic {
     private String topic_name;
     private String subject;
     private String image;
-    private ArrayList<String> sub_topics;
 
     //  Mandatory empty constructor
     public Topic(){
@@ -41,12 +40,5 @@ public class Topic {
         this.image = image;
     }
 
-    public ArrayList<String> getSub_topics(){
-        return sub_topics;
-    }
-
-    public void setSub_topics(ArrayList<String> sub_topics){
-        this.sub_topics = sub_topics;
-    }
 
 }

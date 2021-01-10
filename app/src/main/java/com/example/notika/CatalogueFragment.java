@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
+import com.example.notika.adapter.MyAdapter;
 
 
 /**

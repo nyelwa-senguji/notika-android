@@ -2,6 +2,8 @@ package com.example.notika;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,21 +11,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DetailActivity extends AppCompatActivity {
+import com.example.notika.adapter.DetailAdapter;
+import com.example.notika.model.Sub_Topic;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
-    TextView heading, heading_desc;
+public class DetailActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
-    String topic_name, subject;
+    String topic_name, topic_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        heading = findViewById(R.id.heading);
-        heading_desc = findViewById(R.id.heading_desc);
         toolbar = findViewById(R.id.toolBar);
 
         toolbar.setNavigationIcon(R.drawable.back);
@@ -39,17 +43,31 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void getData(){
-        if ( getIntent().hasExtra("topic_name") && getIntent().hasExtra("subject")){
+        if ( getIntent().hasExtra("topic_name") && getIntent().hasExtra("ID")){
             topic_name = getIntent().getStringExtra("topic_name");
-            subject = getIntent().getStringExtra("subject");
+            topic_id = getIntent().getStringExtra("ID");
+
+            Query query = FirebaseFirestore.getInstance()
+                    .collection("Sub_Topic")
+                    .whereEqualTo("topic_id", topic_id);
+
+            RecyclerView detailRecyclerView = (RecyclerView) findViewById(R.id.detailRecyclerView);
+
+            FirestoreRecyclerOptions<Sub_Topic> options = new FirestoreRecyclerOptions.Builder<Sub_Topic>()
+                    .setQuery(query, Sub_Topic.class)
+                    .build();
+
+            DetailAdapter detailAdapter = new DetailAdapter(options);
+
+            detailRecyclerView.setAdapter(detailAdapter);
+            detailRecyclerView.setLayoutManager(new LinearLayoutManager(DetailActivity.this, LinearLayoutManager.VERTICAL, false));
+
         }else {
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void setData(){
-        heading_desc.setText(subject);
-        heading.setText(topic_name);
         toolbar.setTitle(topic_name);
     }
 }
