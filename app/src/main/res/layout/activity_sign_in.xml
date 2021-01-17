@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/SearchBarTheme"
-    tools:context=".SignInActivity">
+    tools:context="app.maqson.notika.SignInActivity">
 
     <TextView
         android:id="@+id/title"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/SearchBarTheme"
-    tools:context=".SetupActivity">
+    tools:context="app.maqson.notika.SetupActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
