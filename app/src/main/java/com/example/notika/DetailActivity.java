@@ -2,6 +2,7 @@ package com.example.notika;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +23,8 @@ public class DetailActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     String topic_name, topic_id;
+
+    private DetailAdapter detailAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +60,13 @@ public class DetailActivity extends AppCompatActivity {
                     .setQuery(query, Sub_Topic.class)
                     .build();
 
-            DetailAdapter detailAdapter = new DetailAdapter(options);
+            detailAdapter = new DetailAdapter(options);
 
             detailRecyclerView.setAdapter(detailAdapter);
             detailRecyclerView.setLayoutManager(new LinearLayoutManager(DetailActivity.this, LinearLayoutManager.VERTICAL, false));
 
+            RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(DetailActivity.this, DividerItemDecoration.VERTICAL);
+            detailRecyclerView.addItemDecoration(itemDecoration);
         }else {
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
         }
@@ -69,5 +74,17 @@ public class DetailActivity extends AppCompatActivity {
 
     private void setData(){
         toolbar.setTitle(topic_name);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        detailAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        detailAdapter.stopListening();
     }
 }

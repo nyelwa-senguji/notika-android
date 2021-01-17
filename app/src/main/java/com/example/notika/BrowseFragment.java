@@ -26,7 +26,7 @@ import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
  */
 public class BrowseFragment extends Fragment {
 
-    MyBrowserAdapter myBrowserAdapterOne, myBrowserAdapterTwo;
+    private MyBrowserAdapter myBrowserAdapterOne, myBrowserAdapterTwo;
 
     public BrowseFragment() {
         // Required empty public constructor
