@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/featured"
+                android:text="@string/adv_mathematics"
                 android:textSize="16sp"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/popular"
+                android:text="@string/adv_physics"
                 android:textSize="16sp"/>
 
             <androidx.recyclerview.widget.RecyclerView

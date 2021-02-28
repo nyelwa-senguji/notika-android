@@ -76,8 +76,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="google">Continue with google</string>
     <string name="todo">TODO</string>
-    <string name="popular">Popular topics</string>
-    <string name="featured">Featured topics</string>
+    <string name="adv_physics">Advanced physics</string>
+    <string name="adv_mathematics">Advanced Mathematics</string>
     <string name="recent">Recent Added</string>
 
     <string-array name="topics">
@@ -107,22 +107,5 @@
         <item>Advanced level - Form VI</item>
         <item>Advanced Level - Form VI</item>
     </string-array>
-    <string name="title_activity_app_settings">Settings</string>
-
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-
 
 </resources>
